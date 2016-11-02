@@ -14,14 +14,8 @@
 from oslo_utils import importutils
 
 
-def import_versioned_module(version, submodule=None):
-    module = 'appcatalogclient.v%s' % version
-    if submodule:
-        module = '.'.join((module, submodule))
-    return importutils.import_module(module)
-
-
 def Client(version, *args, **kwargs):
-    module = import_versioned_module(version, 'client')
+    module = importutils.import_versioned_module('appcatalogclient',
+                                                 version, 'client')
     client_class = getattr(module, 'Client')
     return client_class(*args, **kwargs)
