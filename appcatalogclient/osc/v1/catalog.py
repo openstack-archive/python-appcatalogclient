@@ -11,12 +11,8 @@
 #   License for the specific language governing permissions and limitations
 #   under the License.
 
-import logging
-
 from cliff import lister
 from cliff import show
-
-LOG = logging.getLogger(__name__)
 
 
 class ListApps(lister.Lister):
